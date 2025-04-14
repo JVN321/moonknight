@@ -1,0 +1,193 @@
+@font-face {
+  font-family: "Koulen";
+  src: url("assets/fonts/Koulen.woff2") format("truetype");
+  font-family: "Koulen", Arial, sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Koulen, Arial, sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 200vh; /* Extend height for scrolling */
+}
+
+.parallax-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #222222, #111);
+  z-index: -2;
+  transform: translateZ(0);
+  will-change: transform;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax-img {
+  position: fixed;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -5;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  gap: 100px;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.portfolio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.info-box {
+  width: 40%;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section {
+  position: relative;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title span {
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: 2rem;
+  opacity: 0.8;
+  text-align: left;
+  transform: translate(0%, -300%);
+}
+
+.hero-image {
+  height: 120%;
+  top: 70%;
+  left: 50%;
+  transform: translate(-60%, -50%);
+  z-index: -1;
+  /* Add transition for smooth animation */
+  transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, top 0.5s ease-in-out, left 0.5s ease-in-out;
+}
+
+/* New class for the aside state */
+.hero-image.aside {
+  height: 60%; /* Smaller height */
+  top: 50%;    /* Centered vertically */
+  left: 85%;   /* Positioned to the right (85% from left edge) */
+  transform: translate(-80%, -50%) scale(1); /* Center the image based on the new left value */
+}
+
+.introduction-section {
+  padding: 20px;
+  margin-bottom: 3000px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  opacity: 0.9;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 100px auto 50px auto; /* Added bottom margin */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Styles for the new details section */
+.details-section {
+  padding: 30px 20px;
+  width: 45%; /* Adjust width to fit on the left */
+  max-width: 600px; /* Max width */
+  margin: 50px 50% 50px 5%; /* Position on the left: T R B L (leave ~50% right margin for image) */
+  color: white;
+  text-align: left; /* Align text left within the section */
+  /* Keep other styles like background, border-radius etc. */
+}
+
+.details-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  text-align: center; /* Center the heading within the section */
+}
+
+.details-section ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Use flexbox for layout */
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: flex-start; /* Align items to the start */
+  gap: 20px; /* Add space between boxes */
+}
+
+.details-section li {
+  background-color: rgba(34, 34, 34, 0.8); /* Dark background for boxes */
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  flex-basis: calc(100% - 10px); /* Make boxes take full width minus gap adjustment */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  text-align: left; /* Align text inside boxes to the left */
+  font-size: 1.1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.details-section li:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+}
+
+.details-section li strong {
+  color: #aaa; /* Slightly lighter color for the label */
+  margin-right: 8px;
+  display: block; /* Make strong element take its own line */
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.title-text {
+  font-size: 5rem;
+  text-align: center;
+  opacity: 0.8;
+  text-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+}

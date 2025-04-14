@@ -10,3 +10,5 @@ A simple portfoio about moonlight created using simple html,css and js
 ├── script.js          // JavaScript for interactive functionality
 └── assets/            // Images and other static assets
 ````
+
+[Preview](https://jvn321.github.io/moonknight/)

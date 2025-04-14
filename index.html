@@ -8,7 +8,7 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- Parallax background container -->
+    <!-- Background elements -->
     <div class="parallax-bg">
       <canvas id="particle-canvas"></canvas>
     </div>
@@ -17,14 +17,16 @@
       <div class="portfolio-container">
         <div class="hero-section">
           <div class="hero-title">
-            <span style="transform: translate(-60%, -100%)" class="title-text">MOON</span>
-            <span style="transform: translate(60%, -100%)" class="title-text">KNIGHT</span>
+            <span style="transform: translate(-60%, 0%)" class="title-text">MOON</span>
+            <span style="transform: translate(60%, 0%)" class="title-text">KNIGHT</span>
             <div class="hero-subtitle">MARC SPECTOR</div>
           </div>
         </div>
 
         <div>
-          <img src="assets/images/moonKnightMain.png" alt="Moon Knight" class="hero-image parallax-img" />
+          <!-- Image Layers for Reveal Effect -->
+          <img src="assets/images/mrKnight.png" alt="Mr. Knight" class="hero-image parallax-img" id="mr-knight-image" /> <!-- Bottom Layer -->
+          <img src="assets/images/moonKnightMain.png" alt="Moon Knight" class="hero-image parallax-img" id="moon-knight-image" /> <!-- Top Layer -->
         </div>
       </div>
       <div class="introduction-section">
@@ -37,18 +39,30 @@
         </p>
       </div>
       <div class="details-section">
-        <h2>Details</h2>
-        <ul>
-          <li><strong>Identity:</strong> The armored superhero identity; Crime-fighter embracing Khonshu’s mission.</li>
-          <li><strong>Purpose:</strong> Inspire fear and deliver justice.</li>
-          <li><strong>Strengths:</strong> Unpredictable combatant, skilled with gadgets, enhanced strength (moon-dependent), potential near-invulnerability.</li>
-          <li><strong>Weaknesses:</strong> Mental instability, vengeance obsession, potential blind obedience to Khonshu.</li>
-          <li><strong>Key Enemies:</strong> Black Spectre, Midnight Man, Sun King.</li>
-          <li><strong>First Appearance:</strong> Suit established in Moon Knight #1 (1980).</li>
-          <li><strong>Role:</strong> The weapon/external face of the system; delivers justice.</li>
-          <li><strong>Khonshu Connection:</strong> Entirely tied to Khonshu’s will; sometimes believes he is Khonshu's voice.</li>
-        </ul>
+        <h2>Moonknight</h2>
+        <div class="details-container">
+          <div class="detail-item full-width"><strong>Identity:</strong> The armored superhero identity; Crime-fighter embracing Khonshu’s mission.</div>
+          <div class="detail-item full-width"><strong>Purpose:</strong> Inspire fear and deliver justice.</div>
+          <div class="detail-item half-width"><strong>Strengths:</strong> Unpredictable combatant, skilled with gadgets, enhanced strength (moon-dependent), potential near-invulnerability.</div>
+          <div class="detail-item half-width"><strong>Weaknesses:</strong> Mental instability, vengeance obsession, potential blind obedience to Khonshu.</div>
+          <div class="detail-item half-width"><strong>Key Enemies:</strong> Black Spectre, Midnight Man, Sun King.</div>
+          <div class="detail-item half-width"><strong>First Appearance:</strong> Suit established in Moon Knight #1 (1980).</div>
+          <div class="detail-item full-width"><strong>Role:</strong> The weapon/external face of the system; delivers justice.</div>
+          <div class="detail-item full-width"><strong>Khonshu Connection:</strong> Entirely tied to Khonshu’s will; sometimes believes he is Khonshu's voice.</div>
+        </div>
       </div>
+
+      <!-- Video Quote Section -->
+      <div id="video-quote-section">
+        <video autoplay loop muted playsinline>
+          <source src="assets/videos/moon-knight.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="quote-container">
+          <p>I don't wear the mask to hide who I am. I wear it to create what I am.</p>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>

@@ -11,7 +11,17 @@ body {
   color: white;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 200vh; /* Extend height for scrolling */
+  height: 400vh; /* Ensure enough scroll height */
+
+  /* Hide scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE, Edge */
+}
+
+/* Hide scrollbar */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar { /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .parallax-bg {
@@ -93,7 +103,7 @@ body {
   font-size: 2rem;
   opacity: 0.8;
   text-align: left;
-  transform: translate(0%, -300%);
+  transform: translate(0%, -300%); /* Initial position */
 }
 
 .hero-image {
@@ -101,22 +111,41 @@ body {
   top: 70%;
   left: 50%;
   transform: translate(-60%, -50%);
-  z-index: -1;
-  /* Add transition for smooth animation */
+  position: fixed;
   transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, top 0.5s ease-in-out, left 0.5s ease-in-out;
 }
 
-/* New class for the aside state */
+#moon-knight-image {
+  will-change: clip-path; /* Performance hint */
+  z-index: -1; /* Top image */
+}
+
+#mr-knight-image {
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, visibility, clip-path; /* Performance hint */
+  z-index: -2; /* Bottom image */
+}
+
+/* State when images move aside */
 .hero-image.aside {
-  height: 60%; /* Smaller height */
-  top: 50%;    /* Centered vertically */
-  left: 85%;   /* Positioned to the right (85% from left edge) */
-  transform: translate(-80%, -50%) scale(1); /* Center the image based on the new left value */
+  height: 60%;
+  top: 50%;
+  left: 85%;
+  transform: translate(-80%, -50%); /* Base transform */
+}
+
+#moon-knight-image.aside {
+  transform: translate(-80%, -50%) scale(1.5); /* Specific scale */
+}
+
+#mr-knight-image.aside {
+  transform: translate(-80%, -50%) scale(1.6); /* Specific scale */
 }
 
 .introduction-section {
   padding: 20px;
-  margin-bottom: 3000px;
+  margin-bottom: 3000px; /* Creates scroll space */
   border-radius: 10px;
   width: 80%;
   max-width: 800px;
@@ -126,19 +155,17 @@ body {
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.6;
-  margin: 100px auto 50px auto; /* Added bottom margin */
+  margin: 100px auto 50px auto;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* Styles for the new details section */
 .details-section {
   padding: 30px 20px;
-  width: 45%; /* Adjust width to fit on the left */
-  max-width: 600px; /* Max width */
-  margin: 50px 50% 50px 5%; /* Position on the left: T R B L (leave ~50% right margin for image) */
+  width: 45%;
+  max-width: 600px;
+  margin: 50px 50% 50px 5%; /* Position left, leave space right */
   color: white;
-  text-align: left; /* Align text left within the section */
-  /* Keep other styles like background, border-radius etc. */
+  text-align: left;
 }
 
 .details-section h2 {
@@ -146,40 +173,47 @@ body {
   margin-bottom: 30px;
   text-transform: uppercase;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  text-align: center; /* Center the heading within the section */
+  text-align: center;
 }
 
-.details-section ul {
-  list-style: none; /* Remove default bullet points */
+.details-container {
   padding: 0;
   margin: 0;
-  display: flex; /* Use flexbox for layout */
-  flex-wrap: wrap; /* Allow items to wrap */
-  justify-content: flex-start; /* Align items to the start */
-  gap: 20px; /* Add space between boxes */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
 }
 
-.details-section li {
-  background-color: rgba(34, 34, 34, 0.8); /* Dark background for boxes */
+.detail-item {
+  background-color: rgba(34, 34, 34, 0.8);
   padding: 15px 20px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  flex-basis: calc(100% - 10px); /* Make boxes take full width minus gap adjustment */
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-  text-align: left; /* Align text inside boxes to the left */
+  flex-grow: 1;
+  box-sizing: border-box;
+  text-align: left;
   font-size: 1.1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.details-section li:hover {
-  transform: translateY(-5px); /* Slight lift effect on hover */
+.detail-item.full-width {
+  flex-basis: 100%;
+}
+
+.detail-item.half-width {
+  flex-basis: calc(50% - 10px); /* Account for gap */
+}
+
+.detail-item:hover {
+  transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
 }
 
-.details-section li strong {
-  color: #aaa; /* Slightly lighter color for the label */
+.detail-item strong {
+  color: #aaa;
   margin-right: 8px;
-  display: block; /* Make strong element take its own line */
+  display: block;
   margin-bottom: 5px;
   font-size: 0.9rem;
   text-transform: uppercase;
@@ -190,4 +224,48 @@ body {
   text-align: center;
   opacity: 0.8;
   text-shadow: 0px 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Video Quote Section */
+#video-quote-section {
+  position: relative;
+  height: 110vh; /* Section height for parallax */
+  overflow: hidden;
+  width: 100%;
+}
+
+#video-quote-section video {
+  position: absolute;
+  top: 0; /* Align top for parallax */
+  left: 0;
+  width: 100%;
+  height: 130%; /* Taller than section for parallax */
+  object-fit: cover;
+  z-index: -1; /* Behind quote */
+  filter: brightness(0.4);
+  will-change: transform; /* Performance hint */
+}
+
+.quote-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1; /* Above video */
+}
+
+.quote-container p {
+  font-size: 3rem;
+  font-family: Koulen, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  max-width: 70%;
+  line-height: 1.4;
 }
